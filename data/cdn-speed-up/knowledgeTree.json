@@ -4,6 +4,11 @@
     "open": true,
     "children": [
         {
+            "markdown":"markdown/常用知识.md",
+            "name": "常用知识",
+            "isParent": false,
+            "open": false
+        },{
             "markdown":"markdown/java-knowledge.md",
             "name": "Java知识点",
             "isParent": false,

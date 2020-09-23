@@ -4,21 +4,21 @@
     "open": true,
     "children": [
         {
-            "markdown":"markdown/常用/neo4j.md",
-            "name": "neo4j知识点",
+            "markdown":"markdown/常用/常用知识.md",
+            "name": "常用知识",
             "isParent": false,
             "open": false
-        },{
+        }, {
             "markdown":"markdown/常用/java-knowledge.md",
             "name": "Java知识点",
             "isParent": false,
             "open": false
-        },{
+        }, {
             "markdown":"markdown/常用/typescript-knowledge.md",
             "name": "typescript知识点",
             "isParent": false,
             "open": false
-        },{
+        }, {
             "markdown":"markdown/常用/javascript-knowledge.md",
             "name": "javascript知识点",
             "isParent": false,
