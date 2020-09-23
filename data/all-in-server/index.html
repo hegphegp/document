@@ -2,142 +2,136 @@
 <html>
 
 <head>
-	<title>java知识点</title>
-	<meta charset="utf-8">
-	<link href="static/plugins/t/font_202119_jd1jf4c0v9jatt9.css" rel="stylesheet" type="text/css">
-	<link href="static/plugins/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
-	<link href="static/plugins/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
-	<link href="static/plugins/highlight.js/9.12.0/styles/github-gist.min.css" rel="stylesheet">
-	<link href="static/plugins/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-	<script src="static/plugins/highlight.js/9.12.0/highlight.min.js"></script>
-	<script src="static/plugins/jquery/3.3.1/jquery.min.js"></script>
-	<script src="static/plugins/lodash.js/4.17.5/lodash.min.js"></script>
-	<script src="static/plugins/vue/2.5.16/vue.min.js"></script>
-	<script src="static/plugins/marked/0.3.19/marked.min.js"></script>
-	<script src="static/plugins/nprogress/0.2.0/nprogress.min.js"></script>
+    <title>java知识点</title>
+    <meta charset="utf-8">
+    <link href="static/plugins/t/font_202119_jd1jf4c0v9jatt9.css" rel="stylesheet" type="text/css">
+    <link href="static/plugins/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
+    <link href="static/plugins/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+    <link href="static/plugins/highlight.js/9.12.0/styles/github-gist.min.css" rel="stylesheet">
+    <link href="static/plugins/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+    <script src="static/plugins/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="static/plugins/jquery/3.3.1/jquery.min.js"></script>
+    <script src="static/plugins/lodash.js/4.17.5/lodash.min.js"></script>
+    <script src="static/plugins/vue/2.5.16/vue.min.js"></script>
+    <script src="static/plugins/marked/0.3.19/marked.min.js"></script>
+    <script src="static/plugins/nprogress/0.2.0/nprogress.min.js"></script>
 
     <link href="static/self/zTreeBootstrap/css/bootstrapztree.css" rel="stylesheet" type="text/css" />
     <link href="static/plugins/twitter-bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" />
     <script src="static/plugins/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="static/plugins/zTree.v3/3.5.33/js/jquery.ztree.core.min.js" type="text/javascript"></script>
-	<style>
-html{
-	touch-action: none;
-}
-* { 
-    touch-action: pan-y; 
-}
-		#markdownDoc {
-			margin: auto;
-			width: 100%;
-			box-sizing: border-box;
-			padding: 70px 350px 50px 50px;
-			position: relative
-		}
+    <style>
+        #markdownDoc {
+            margin: auto;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 70px 400px 50px 50px;
+            position: relative
+        }
 
-		header {
-			position: fixed;
-			left: 0;
-			top: 0;
-			z-index: 10;
-			width: 100%;
-			box-sizing: border-box;
-			padding: 0 50px;
-			height: 60px;
-			background: #00A881;
-			line-height: 60px
-		}
+        header {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 50px;
+            height: 60px;
+            background: #00A881;
+            line-height: 60px
+        }
 
-		#nav {
-			width: 300px;
-			padding: 60px 10px 10px;
-			box-sizing: border-box;
-			border-left: 1px solid #ccc;
-			height: 100%;
-			font-size: 14px;
-			position: fixed;
-			top: 0;
-			right: 0;
-			overflow-x: hidden;
-			overflow-y: scroll;
-			-webkit-overflow-scrolling: touch;
-			scrollbar-face-color: #fff;
-			scrollbar-arrow-color: #fff;
-			scrollbar-3dlight-color: #fff;
-			scrollbar-highlight-color: #fff;
-			scrollbar-shadow-color: #fff;
-			scrollbar-darkshadow-color: #fff;
-			scrollbar-track-color: #fff
-		}
+        #nav {
+            width: 350px;
+            padding: 60px 10px 10px;
+            box-sizing: border-box;
+            border-left: 1px solid #ccc;
+            height: 100%;
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-face-color: #fff;
+            scrollbar-arrow-color: #fff;
+            scrollbar-3dlight-color: #fff;
+            scrollbar-highlight-color: #fff;
+            scrollbar-shadow-color: #fff;
+            scrollbar-darkshadow-color: #fff;
+            scrollbar-track-color: #fff
+        }
 
-		/**
-		#nav::-webkit-scrollbar {
-			width: 0;
-			height: 0
-		}
-		*/
+        /**
+        #nav::-webkit-scrollbar {
+            width: 0;
+            height: 0
+        }
+        */
 
-		.markdown-body ul,
-		.markdown-body ul {
-		    padding-left: 1em;
-		}
+        .markdown-body ul,
+        .markdown-body ul {
+            padding-left: 1em;
+        }
 
-		#nav input {
-			outline: 0;
-			width: 100%;
-			border: 1px solid #ccc;
-			box-sizing: border-box;
-			padding: 3px 5px;
-			font-size: 14px;
-			border-radius: 2px;
-			margin-bottom: 10px;
-		}
+        #nav input {
+            outline: 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            padding: 3px 5px;
+            font-size: 14px;
+            border-radius: 2px;
+            margin-bottom: 10px;
+        }
 
-		#nav .active {
-			color: red
-		}
+        #nav .active {
+            color: red
+        }
 
-		#nav>ul {
-			padding: 0
-		}
+        #nav>ul {
+            padding: 0
+        }
 
-		#nav li {
-			list-style: none;
-			margin-top: 0
-		}
+        #nav li {
+            list-style: none;
+            margin-top: 0
+        }
 
-		#nav a {
-			display: inline-block;
-			height: 16px;
-			line-height: 16px;
-			word-break: keep-all;
-			white-space: nowrap
-		}
+        #nav a {
+            display: inline-block;
+            height: 16px;
+            line-height: 16px;
+            word-break: keep-all;
+            white-space: nowrap
+        }
 
         /**改官方样式*/
-		.markdown-body pre {
- 		    word-wrap: normal;
- 		    background-color: #eee !important;
+        .markdown-body pre {
+             word-wrap: normal;
+             background-color: #eee !important;
             padding: 8px;
             margin-bottom: 10px;
-		}
+        }
 
         /**代码注释的字体颜色*/
-		.hljs-comment,
+        .hljs-comment,
         .hljs-meta {
             color: #718c00;
-			font-style: normal;
-			letter-spacing: 1px;
-			font-family: "微软雅黑", SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;
-		}
+            font-style: normal;
+            letter-spacing: 1px;
+            font-family: "微软雅黑", SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;
+        }
 
-		.hljs-comment,
+        .hljs-comment,
         .hljs-quote {
             color: #718c00;
             font-style: normal;
-			letter-spacing: 1px;
-			font-family: "微软雅黑", SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;
-		}
+            letter-spacing: 1px;
+            font-family: "微软雅黑", SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;
+        }
 
         .markdown-body h1,
         .markdown-body h2,
@@ -151,11 +145,11 @@ html{
             line-height: 1.25;
         }
         /**改Bootstrap的模态框的样式*/
-    	.modal-header, 
-    	.modal-footer { 
-    	    padding: 5px 20px 
+        .modal-header, 
+        .modal-footer { 
+            padding: 5px 20px 
         }
-	</style>
+    </style>
 </head>
 
 <body>
@@ -164,18 +158,18 @@ html{
             <button id="buildKnowledgeTreeBtn" class="btn btn-warning" data-toggle="modal" data-target="#knowledgeTreeModal">目  录  结  构</button>
         </center>
     </header>
-	<div id="markdownDoc" v-cloak>
-		<article id="doc" class="markdown-body" v-html="doc"></article>
-		<aside id="nav" class="markdown-body">
-			<input type="text" placeholder="输入关键词快速检索，支持正则" v-model="search" maxlength="15" />
-			<navmenu v-if="!search" :list="nav"></navmenu>
-			<transition-group tag="ul" v-if="search" appear>
-				<li v-for="n of searchlist" :title="n.text" :key="n.text">
-					<a :href="n.href" @click="jump" v-html="n.text"></a>
-				</li>
-			</transition-group>
-		</aside>
-	</div>
+    <div id="markdownDoc" v-cloak>
+        <article id="doc" class="markdown-body" v-html="doc"></article>
+        <aside id="nav" class="markdown-body">
+            <input type="text" placeholder="输入关键词快速检索，支持正则" v-model="search" maxlength="15" />
+            <navmenu v-if="!search" :list="nav"></navmenu>
+            <transition-group tag="ul" v-if="search" appear>
+                <li v-for="n of searchlist" :title="n.text" :key="n.text">
+                    <a :href="n.href" @click="jump" v-html="n.text"></a>
+                </li>
+            </transition-group>
+        </aside>
+    </div>
     
     <!-- 模态框 -->
     <div class="modal fade" id="knowledgeTreeModal">
@@ -185,108 +179,108 @@ html{
                     <h4 class="modal-title">目录结构</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button></div>
                 <div class="modal-body">
-				    <div class="row">
-					    <div class="col-xs-6 col-sm-6">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6">
                             <ul id="knowledgeTreeLeft" class="ztree"></ul>
-						</div>
-						<div class="col-xs-6 col-sm-6">
+                        </div>
+                        <div class="col-xs-6 col-sm-6">
                             <ul id="knowledgeTreeRight" class="ztree"></ul>
-						</div>
-					</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">关闭</button>
-				</div>
+                </div>
             </div>
         </div>
     </div>
 
-	<script type="text/javascript">
+    <script type="text/javascript">
 
-		var knowledgeTreeFileName = "knowledgeTree.json";
-		var toc, markdownDoc = new Vue({
-			el: "#markdownDoc",
-			data: {
-				doc: "",
-				nav: [],
-				search: ""
-			},
-			computed: {
-				searchlist: function() {
-					return localSearch(this.search, this.nav, [])
-				}
-			},
-			components: {
-				navmenu: {
-					name: "navmenu",
-					props: ["list"],
-					template: '<transition-group v-if="list.length" tag="ul" appear><li v-for="n of list" :title="n.text" :key="n.text"><a :href="n.href" @click="markdownDoc.jump" v-html="n.text"></a><navmenu  v-if="list.length" :list="n.child"></navmenu></li></transition-group>'
-				}
-			},
-			methods: {
-				jump: function(a) {
-					this.search = "",
-					a.preventDefault();
-					var b = $(a.target.getAttribute("href")).offset().top - 70;
-					$(window).scrollTop(b)
-				}
-			},
-			computed: {
-				searchlist: function() {
-					return localSearch(this.search, this.nav, [])
-				}
-			}
-		})
-		function addtoc(a, b, c) {
-			1 == c || 0 == a.length || a[a.length - 1].level == b.level ? a.push(b) : addtoc(a[a.length - 1].child, b, c - 1)
-		}
-		function loadDoc(markdownFileName) {
-			var a = ["document"],
-			b = location.hash.substr(1);
-			toc = [],
-			$(window).scrollTop(0),
-			NProgress.start(),
-			$.get(markdownFileName+"?_"+new Date().getTime(), function(a) {
-				marked(a, {
-					renderer: render,
-					highlight: function(a) {
-						return hljs.highlightAuto(a).value
-					}
-				},
-				function(a, b) {
-					markdownDoc.search = "",
-					markdownDoc.doc = b,
-					Vue.set(markdownDoc, "nav", toc),
-					NProgress.done()
-				})
-			})
-		}
-		function localSearch(a, b, c) {
-			try {
-			var d = new RegExp(a, "i");
-			b.forEach(function(b) {
-				b.text.match(d) && c.push(b),
-				b.child.length && localSearch(a, b.child, c)
-			})
-			} catch(e) {}
-			return c
-		}
-		render = new marked.Renderer;
-		render.heading = function(a, b) {
-			var e, c = /^(\d+(_\d+)*).*/.exec(a.replace(/\./g, "_")),
-			d = "<h" + b;
-			return c ? (d += ' id="markdownDoc_' + c[1] + '" class="_anchor">', e = {
-				href: "#markdownDoc_" + c[1],
-				level: b,
-				text: a,
-				child: []
-			},
-			addtoc(toc, e, b)) : d += ">",
-			d += a + "</h" + b + ">"
-		};
-		
+        var knowledgeTreeFileName = "knowledgeTree.json";
+        var toc, markdownDoc = new Vue({
+            el: "#markdownDoc",
+            data: {
+                doc: "",
+                nav: [],
+                search: ""
+            },
+            computed: {
+                searchlist: function() {
+                    return localSearch(this.search, this.nav, [])
+                }
+            },
+            components: {
+                navmenu: {
+                    name: "navmenu",
+                    props: ["list"],
+                    template: '<transition-group v-if="list.length" tag="ul" appear><li v-for="n of list" :title="n.text" :key="n.text"><a :href="n.href" @click="markdownDoc.jump" v-html="n.text"></a><navmenu  v-if="list.length" :list="n.child"></navmenu></li></transition-group>'
+                }
+            },
+            methods: {
+                jump: function(a) {
+                    this.search = "",
+                    a.preventDefault();
+                    var b = $(a.target.getAttribute("href")).offset().top - 70;
+                    $(window).scrollTop(b)
+                }
+            },
+            computed: {
+                searchlist: function() {
+                    return localSearch(this.search, this.nav, [])
+                }
+            }
+        })
+        function addtoc(a, b, c) {
+            1 == c || 0 == a.length || a[a.length - 1].level == b.level ? a.push(b) : addtoc(a[a.length - 1].child, b, c - 1)
+        }
+        function loadDoc(markdownFileName) {
+            var a = ["document"],
+            b = location.hash.substr(1);
+            toc = [],
+            $(window).scrollTop(0),
+            NProgress.start(),
+            $.get(markdownFileName+"?_"+new Date().getTime(), function(a) {
+                marked(a, {
+                    renderer: render,
+                    highlight: function(a) {
+                        return hljs.highlightAuto(a).value
+                    }
+                },
+                function(a, b) {
+                    markdownDoc.search = "",
+                    markdownDoc.doc = b,
+                    Vue.set(markdownDoc, "nav", toc),
+                    NProgress.done()
+                })
+            })
+        }
+        function localSearch(a, b, c) {
+            try {
+            var d = new RegExp(a, "i");
+            b.forEach(function(b) {
+                b.text.match(d) && c.push(b),
+                b.child.length && localSearch(a, b.child, c)
+            })
+            } catch(e) {}
+            return c
+        }
+        render = new marked.Renderer;
+        render.heading = function(a, b) {
+            var e, c = /^(\d+(_\d+)*).*/.exec(a.replace(/\./g, "_")),
+            d = "<h" + b;
+            return c ? (d += ' id="markdownDoc_' + c[1] + '" class="_anchor">', e = {
+                href: "#markdownDoc_" + c[1],
+                level: b,
+                text: a,
+                child: []
+            },
+            addtoc(toc, e, b)) : d += ">",
+            d += a + "</h" + b + ">"
+        };
+        
         /**构造目录结构树*/
-	    var setting = {
+        var setting = {
             data: {
                 simpleData: {
                     enable: true
@@ -295,8 +289,8 @@ html{
             callback: {
                 beforeClick: function zTreeBeforeClick(treeId, node, clickFlag) {
                     if(node.isParent!=true) {
-						loadDoc(node.markdown);
-						$("#knowledgeTreeModal").modal('hide');
+                        loadDoc(node.markdown);
+                        $("#knowledgeTreeModal").modal('hide');
                     }
                 }
             }
@@ -311,7 +305,7 @@ html{
                 success: function(data) {
                     var knowledgeTreeJson = eval('(' + data + ')');
                     $.fn.zTree.init($("#knowledgeTreeLeft"), setting, knowledgeTreeJson);
-					$.fn.zTree.init($("#knowledgeTreeRight"), setting, knowledgeTreeJson);
+                    $.fn.zTree.init($("#knowledgeTreeRight"), setting, knowledgeTreeJson);
                 }
             });
         }
