@@ -117,3 +117,175 @@ File -> Preference -> Settings，点击 Edit in setting.json，添加下面的�
 * UnhandledPromiseRejectionWarning: TypeError: loaderContext.getResolve is not a function
 * * 构建Vue 项目 安装各种插件，直到安装less，编译就卡死在17%进度不动，报错了。检查./build/webpack.base.conf.js配置是否配置有误，再或者是删除node_modules 结果还是报错。。。记得以前安装都是直接使用的。
 * * 静下心看是哪一步操作有误，检查一番后发现不是配置问题。百度看了一下别人响应，最后得出的结果就是 less-loader的版本过高，然后直接安装一个npm install less-loader@4.1.0 -s进行覆盖。原先版本是多少也没注意看，是直接安装的，属于最高版本。
+
+
+### 单个页面居中表单
+```
+<template>
+  <div class="container">
+    <div class="main">
+      <a-form
+        id="formLogin"
+        class="user-layout-login"
+        ref="formLogin"
+        :form="form"
+        @submit="handleSubmit"
+      >
+        <h1 style="text-align: center;">后台管理系统登录页面后台管理系统登录页面后台管理系统登录页面</h1>
+        <a-form-item>
+          <a-input
+            size="large"
+            type="text"
+            placeholder="请输入账户名或邮箱地址"
+            v-decorator="[
+            'loginAccount',
+            {rules: [{required: true,message:'账户名称不能为空！'},{max:20,message:'账号长度不能超过20个字符！'}]
+            , validateTrigger: 'blur'}
+            ]"
+          >
+          </a-input>
+        </a-form-item>
+        <a-form-item>
+          <a-input
+            size="large"
+            type="password"
+            placeholder="请输入密码"
+            v-decorator="[
+            'loginPassword',
+            {rules: [{required: true,message:'密码不能为空！'},{max:20,message:'密码长度不能超过20个字符！'}]
+            , validateTrigger: 'blur'}
+            ]"
+          >
+          </a-input>
+        </a-form-item>
+        <a-form-item>
+          <a-col :span="16">
+            <a-input
+              size="large"
+              type="text"
+              placeholder="请输入验证码"
+              v-decorator="[
+              'verifyCode',
+              {rules: [{required: true,message:'验证码不能为空！'}]
+              , validateTrigger: 'blur'}
+              ]"
+            >
+            </a-input>
+          </a-col>
+          <a-col :span="7" style="float:right">
+            <img src="http://layuimini.99php.cn/iframe/v2/images/captcha.jpg"/>
+          </a-col>
+        </a-form-item>
+        <a-form-item style="margin-top: 24px;">
+          <a-button
+            size="large"
+            type="primary"
+            htmlType="submit"
+            class="login-button"
+          >登陆
+          </a-button>
+        </a-form-item>
+      </a-form>
+    </div>
+  </div>
+</template>
+<script>
+
+export default {
+  name: 'login',
+  data () {
+    return {
+      form: this.$form.createForm(this)
+    }
+  },
+  methods: {
+    handleSubmit (e) {
+      e.preventDefault()
+      this.form.validateFields(err => {
+        console.log('err=>' + err)
+      })
+    }
+  }
+}
+
+</script>
+<style lang="less" scoped>
+  .container {
+    width: 100%;
+    min-height: 100%;
+    background: #f0f2f5 url(../../assets/login.svg);
+    background-size: 100%;
+    padding: 210px 0 144px;
+    position: relative;
+
+    .top {
+      text-align: center;
+
+      .header {
+
+        .logo {
+          vertical-align: top;
+          margin-right: 16px;
+          border-style: none;
+        }
+      }
+
+    }
+
+    .main {
+      min-width: 260px;
+      width: 368px;
+      margin: 0 auto;
+
+      .user-layout-login {
+        label {
+          font-size: 14px;
+        }
+
+        .getCaptcha {
+          display: block;
+          width: 100%;
+          height: 40px;
+        }
+
+        .forge-password {
+          font-size: 14px;
+        }
+
+        button.login-button {
+          padding: 0 15px;
+          font-size: 16px;
+          height: 40px;
+          width: 100%;
+        }
+
+        .user-login-other {
+          text-align: left;
+          margin-top: 24px;
+          line-height: 22px;
+
+          .item-icon {
+            font-size: 24px;
+            color: rgba(0, 0, 0, 0.2);
+            margin-left: 16px;
+            vertical-align: middle;
+            cursor: pointer;
+            transition: color 0.3s;
+
+            &:hover {
+              color: #1890ff;
+            }
+          }
+
+          .register {
+            float: right;
+          }
+        }
+      }
+
+    }
+  }
+
+</style>
+
+```
