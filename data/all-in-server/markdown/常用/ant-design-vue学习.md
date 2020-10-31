@@ -369,6 +369,82 @@ export default {
 ```
 ```
 
+* this.$notification.success的duration参数设置提示框的显示时长
+```
+this.$notification.success({
+  message: '欢迎',
+  description: `欢迎回来`,
+  duration: 2
+})
+```
+
+### 父子组件传值，实现列表打开新增modal框，编辑框，关闭后自动刷新列表
+```
+<!-- 父子组件传值 -->
+<!-- 父组件 -->
+<button @onclick="openFormModal('add')">新增</button>
+<FormModal ref="formMadal"></FormModal>
+<script type="text/javascript">
+    methods: {
+      openFormModal (type) {
+        this.$refs.formMadal.openDrawer(row);
+      }
+    }
+</script>
+
+<!-- 子组件 -->
+<template>
+  <a-modal
+    title="新建规则"
+    :width="640"
+    :visible="visible"
+    :confirmLoading="loading"
+    @cancel="handleCancel">
+    <a-spin :spinning="loading">
+
+      ... 控件 ...
+
+      <template slot="footer">
+        <a-button type="primary" @click="handleOk" :disabled="loading">新增</a-button>
+        <a-button type="primary" @click="handleOk" :disabled="loading">保存</a-button>
+        <a-button type="primary" @click="handleCancel" :disabled="loading">返回</a-button>
+      </template>
+    </a-spin>
+  </a-modal>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      visible: false,
+      form: this.$form.createForm(this)
+    }
+  },
+  methods: {
+    openFormModal (type = 'add') {
+      this.visible = true
+    },
+    handleCancel () {
+      this.loading = true
+      setTimeout(() => {
+        this.visible = false
+        this.loading = false
+      }, 1000)
+    },
+    handleOk () {
+      this.loading = true
+      setTimeout(() => {
+        this.visible = false
+        this.loading = false
+      }, 1000)
+    }
+  }
+}
+</script>
+```
+
+
 ### 下面抛的错让我痛不欲生，让我无尽绝望，对于一个入门学习的人，任何一个错误都会让人绝望
 * UnhandledPromiseRejectionWarning: TypeError: loaderContext.getResolve is not a function
 * * 构建Vue 项目 安装各种插件，直到安装less，编译就卡死在17%进度不动，报错了。检查./build/webpack.base.conf.js配置是否配置有误，再或者是删除node_modules 结果还是报错。。。记得以前安装都是直接使用的。
