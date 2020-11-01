@@ -379,15 +379,19 @@ this.$notification.success({
 ```
 
 ### 父子组件传值，实现列表打开新增modal框，编辑框，关闭后自动刷新列表
-```
+```javascript
 <!-- 父子组件传值 -->
 <!-- 父组件 -->
 <button @onclick="openFormModal('add')">新增</button>
-<FormModal ref="formMadal"></FormModal>
+<FormModal ref="formMadal" @refreshPage="refreshPage"></FormModal>
 <script type="text/javascript">
     methods: {
       openFormModal (type) {
         this.$refs.formMadal.openDrawer(row);
+      },
+      refreshPage () {
+        // 在此处刷新页面
+        this.$refs.table.refresh(true)
       }
     }
 </script>
@@ -396,7 +400,7 @@ this.$notification.success({
 <template>
   <a-modal
     title="新建规则"
-    :width="640"
+    :wkeyth="640"
     :visible="visible"
     :confirmLoading="loading"
     @cancel="handleCancel">
@@ -430,6 +434,8 @@ export default {
       setTimeout(() => {
         this.visible = false
         this.loading = false
+        // 通过 this.$emit 加上方法名调用父组件的方法
+        this.$emit('refreshPage')
       }, 1000)
     },
     handleOk () {
@@ -437,6 +443,8 @@ export default {
       setTimeout(() => {
         this.visible = false
         this.loading = false
+        // 通过 this.$emit 加上方法名调用父组件的方法
+        this.$emit('refreshPage')
       }, 1000)
     }
   }
