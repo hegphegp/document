@@ -10,12 +10,12 @@ services:
       - ./data/conf.d:/etc/nginx/conf.d
       - ./data/all-in-server:/usr/share/nginx/html
 
-#  cdn-speed-up:
-#    restart: always
-#    image: nginx:1.16.0-alpine
-#    ports:
-#      - 16081:80
-#    volumes:
-#      - ./data/conf.d:/etc/nginx/conf.d
-#      - ./data/cdn-speed-up:/usr/share/nginx/html
+  cdn-speed-up:
+    restart: always
+    image: nginx:1.16.0-alpine
+    ports:
+      - 16081:80
+    volumes:
+      - ./data/conf.d:/etc/nginx/conf.d
+      - ./data/cdn-speed-up:/usr/share/nginx/html
  

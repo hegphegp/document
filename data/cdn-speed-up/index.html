@@ -220,8 +220,11 @@
                 jump: function(a) {
                     this.search = "",
                     a.preventDefault();
-                    var b = $(a.target.getAttribute("href")).offset().top - 70;
-                    $(window).scrollTop(b)
+                    var offset = $(a.target.getAttribute("href")).offset();
+                    if(offset) {
+                        var b = offset.top - 70;
+                        $(window).scrollTop(b)
+                    }
                 }
             },
             computed: {
