@@ -1,5 +1,6 @@
 ## Beetl2.9 中文文档
 
+### 这份文档是直接从Beetl官方文档获取到的，然后保存到这个仓库，主要是看了Beetl的排版很好看，官方地址是 http://ibeetl.com/
 Beetl作者：李家智 <[xiandafu@126.com](mailto:xiandafu@126.com)>
 
 ### 1. 什么是Beetl
