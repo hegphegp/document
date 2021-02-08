@@ -1,13 +1,17 @@
 ## webmagic 介绍
 
 ### 1. webmagic注意点
-#### 1.1 常用参数和方法的介绍
+#### 1.1 webmagic注意点
+* 放弃了pipeline保存数据，直接在PageProcessor的process()保存数据，同时使用page.setSkip(true)忽略pipeline
 * Site.setUserAgent() 方法，在程序运行后，实时改变setUserAgent的取值，发送请求的userAgent参数不会变
 * Site.addCookie() 方法，在程序运行后，实时使用addCookie方法修改和添加cookie，发送请求的cookie参数不会变
 * Site.addHeader() 方法，在程序运行后，实时使用addHeader方法修改和添加Header，发送请求的header参数会实时变化
 * Spider.addUrl() 方法，一般用于首次爬取的url集合，会把添加的url都保存到scheduler里面
 * 多次连续出现请求的httpStatus非200时，若scheduler里面的url非空，还会继续爬取所有的url
 * 重写onDownloadSuccess的非200的httpStatus逻辑，重试请求，官方默认的方法有bug，非200的httpStatus不会重试请求
+* POST,PUT,DELETE不是幂等操作，webmagic默认不去重，要自己继承DuplicateRemovedScheduler，重写push方法
+* 服务返回的Cookie，webmagic会自动带上(可能是httpclient自动带上)，不需要手动写业务代码配置
+
 
 #### 1.2 开发逻辑
 * 在PageProcessor的process(Page page)方法保存数据库数据
@@ -28,12 +32,14 @@
 * 查所有   jedis.hgetAll(key)             查map的所有key-value
 * 是否存在 jedis.hexists(key, field)      判断map的field是否存在
 
+
 #### 1.5 set数据结构类型增删查改，事先都不需要提前在redis创建set结构
 * 增          jedis.sadd(key, members...)
 * 查所有       jedis.smembers(key)
 * 是否存在     jedis.sismember(key, member)
 * 删除多个key  jedis.srem(key, items...)
 * 查数量       jedis.scard(key)
+
 
 #### 1.6 list列表数据结构类型增删查改，事先都不需要提前在redis创建list结构
 * 在head新增   jedis.lpush(key, fields...)
