@@ -863,13 +863,12 @@ export default {
 ```
 
 ##### 同步，异步执行
+##### 使用了await之后，await外层的方法一定要加async关键字，这是背诵默写的规则
 * async修饰方法调用，并行执行
 * await修饰方法调用，串行执行
 
-* async修饰的方法内，尽量不要使用await，外层async搞并行，方法内使用await搞串行，脑抽经了？
-
 ```
-getBooksAndAuthor(authorId) {
+async getBooksAndAuthor(authorId) {
     const books = await bookModel.fetchAll();
     const author = await authorModel.getch(authorId);
     return {
@@ -879,8 +878,7 @@ getBooksAndAuthor(authorId) {
 }
 
 
-
-getBooksAndAuthor(authorId) {
+async getBooksAndAuthor(authorId) {
     const bookPromise = bookModel.fetchAll();
     const authorPromise = authorModel.getch(authorId);
     const book = await bookPromise;
