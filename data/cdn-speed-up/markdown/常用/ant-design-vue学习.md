@@ -861,3 +861,34 @@ export default {
 </style>
 
 ```
+
+##### 同步，异步执行
+* async修饰方法调用，并行执行
+* await修饰方法调用，串行执行
+
+* async修饰的方法内，尽量不要使用await，外层async搞并行，方法内使用await搞串行，脑抽经了？
+
+```
+getBooksAndAuthor(authorId) {
+    const books = await bookModel.fetchAll();
+    const author = await authorModel.getch(authorId);
+    return {
+        author,
+        books: books.filter(book => book.aurhotId === authorId)
+    }
+}
+
+
+
+getBooksAndAuthor(authorId) {
+    const bookPromise = bookModel.fetchAll();
+    const authorPromise = authorModel.getch(authorId);
+    const book = await bookPromise;
+    const author = await authorPromise;
+    return {
+        author,
+        books: books.filter(book => book.aurhotId === authorId)
+    }
+}
+
+```
