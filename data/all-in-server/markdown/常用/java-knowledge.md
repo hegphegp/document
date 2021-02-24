@@ -559,34 +559,6 @@ class User {
 }
 ```
 
-### 1.7 JpaRepository添加SQL语句接口
-```
-package com.hegp.dao;
-
-import com.hegp.domain.GroupEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-
-@Repository
-public interface GroupRepository extends JpaRepository<GroupEntity, String>, JpaSpecificationExecutor<GroupEntity> {
-    @Transactional
-    @Modifying
-    @Query(value = "DELETE FROM sys_user_group_rel WHERE group_id IN :groupIds", nativeQuery = true)
-    void deleteUserGroupRelByGroupIds(@Param("groupIds") List<String> groupIds);
-
-    @Transactional
-    @Modifying
-    @Query(value = "DELETE FROM sys_group_role_rel WHERE group_id IN :groupIds", nativeQuery = true)
-    void deleteGroupRolRelByGroupIds(@Param("groupIds") List<String> groupIds);
-}
-```
 
 ### 1.6 java自带的IO类
 * 本人已知的Java自带的IO类，只有 FileWriter 、FileOutputStream 和 RandomAccessFile 可以在文件追加内容
@@ -962,4 +934,161 @@ public class TestBufferedOutputStream {
         }
     }
 }
+```
+
+
+### 1.7 JpaRepository添加SQL语句接口
+```
+package com.hegp.dao;
+
+import com.hegp.domain.GroupEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Repository
+public interface GroupRepository extends JpaRepository<GroupEntity, String>, JpaSpecificationExecutor<GroupEntity> {
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM sys_user_group_rel WHERE group_id IN :groupIds", nativeQuery = true)
+    void deleteUserGroupRelByGroupIds(@Param("groupIds") List<String> groupIds);
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM sys_group_role_rel WHERE group_id IN :groupIds", nativeQuery = true)
+    void deleteGroupRolRelByGroupIds(@Param("groupIds") List<String> groupIds);
+}
+```
+
+### 1.8.0  maven多模块项目结构
+```xml
+# start的pom.xml
+<project>
+    <groupId>com.example</groupId>
+    <artifactId>ali-layer</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>ali-layer-api</module>
+        <module>ali-layer-dao</module>
+        <module>ali-layer-manager</module>
+        <module>ali-layer-service</module>
+        <module>ali-layer-web</module>
+        <module>start</module>
+    </modules>
+</project>
+
+
+# ali-layer-api的pom.xml
+<project>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>ali-layer</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>ali-layer-api</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>ali-layer-dao</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
+
+
+# ali-layer-manager的pom.xml
+<project>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>ali-layer</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>ali-layer-manager</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</project>
+
+
+# ali-layer-dao的pom.xml
+<project>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>ali-layer</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>ali-layer-dao</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>ali-layer-manager</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
+
+
+# ali-layer-manager的pom.xml
+<project>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>ali-layer</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>ali-layer-manager</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</project>
+
+
+# ali-layer-service的pom.xml
+<project>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>ali-layer</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>ali-layer-service</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>ali-layer-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>ali-layer-dao</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>ali-layer-manager</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
+
+
+# ali-layer-web的pom.xml
+<project>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>ali-layer</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>ali-layer-manager</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</project>
 ```

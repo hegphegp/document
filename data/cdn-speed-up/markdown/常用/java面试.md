@@ -29,7 +29,11 @@ public class ReverseList {
     public static void main(String[] args) {
         ListNode listNode = create();
         listNode = reverseList(listNode);
-        System.out.println("0000000000");
+        while (listNode!=null) {
+            System.out.print(listNode.data+"  ");
+            listNode = listNode.next;
+        }
+        System.out.println();
     }
 
     public static ListNode create() {
@@ -82,10 +86,10 @@ public class QuickSort {
         int end = high;
         int temp = arr[low];
         while (start<end) {
-            while ((start<end) && arr[end]>=temp) {
+            while (start<end && arr[end]>=temp) {
                 end--;
             }
-            while ((start<end) && temp>=arr[start]) {
+            while (start<end && temp>=arr[start]) {
                 start++;
             }
             if (start<end) {
@@ -105,8 +109,9 @@ public class QuickSort {
         int[] arr = {10, 7, 2, 4, 7, 62, 3, 4, 2, 1, 8, 9, 19};
         quickSort(arr, 0, arr.length - 1);
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+            System.out.print(arr[i]+"  ");
         }
+        System.out.println();
     }
 }
 ```
