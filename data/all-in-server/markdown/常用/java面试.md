@@ -1,5 +1,39 @@
-## 1.0 java面试
-### 1.1 ReentrantLock与
+## java面试
+
+### 1.0 java垃圾回收算法
+* 01) 引用计数法
+* 02) Mark-Sweep（标记-清除）Tracing Collector（tracing算法）
+* 03) Copying（复制）算法
+* 04) Mark-Compact（标记-整理）算法
+* 05) Generational Collection（分代收集）算法
+
+### 1.1 java垃圾收集器
+```
+01) Serial收集器（复制算法）
+    新生代单线程收集器，标记和清理都是单线程，优点是简单高效。
+
+02) Serial Old收集器（标记-整理算法）
+    老年代单线程收集器，Serial收集器的老年代版本。
+
+03) ParNew收集器（停止-复制算法）　
+    新生代收集器，可以认为是Serial收集器的多线程版本,在多核CPU环境下有着比Serial更好的表现。
+
+04) Parallel Scavenge收集器（停止-复制算法）
+    并行收集器，追求高吞吐量，高效利用CPU。吞吐量一般为99%， 吞吐量= 用户线程时间/(用户线程时间+GC线程时间)。适合后台应用等对交互相应要求不高的场景。
+
+05) Parallel Old收集器（停止-复制算法）
+    Parallel Scavenge收集器的老年代版本，并行收集器，吞吐量优先
+
+06) CMS（Concurrent Mark Sweep）收集器（标记-清理算法）
+    高并发、低停顿，追求最短GC回收停顿时间，cpu占用比较高，响应时间快，停顿时间短，多核cpu 追求高响应时间的选择
+
+07) G1垃圾收集器
+    G1垃圾收集器相对比其他收集器而言，最大的区别在于它取消了年轻代、老年代的物理划分，取而代之的是将堆划分为若干个区域（Region），这些区域中包含了有逻辑上的年轻代、老年代区域。
+
+08) ZGC垃圾收集器
+```
+
+### 1.1 ReentrantLock与synchronized
 ```
 可重入、锁超时、可中断、公平锁
 共同点：
@@ -28,8 +62,21 @@ public class ReverseList {
 
     public static void main(String[] args) {
         ListNode listNode = create();
+        ListNode node = listNode;
+        System.out.println("反转前");
+        while (node!=null) {
+            System.out.print(node.data+" ");
+            node = node.next;
+        }
+        System.out.println("\n");
+        System.out.println("反转后");
         listNode = reverseList(listNode);
-        System.out.println("0000000000");
+        node = listNode;
+        while (node!=null) {
+            System.out.print(node.data+" ");
+            node = node.next;
+        }
+        System.out.println();
     }
 
     public static ListNode create() {
